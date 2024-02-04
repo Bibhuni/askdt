@@ -19,7 +19,16 @@ function Main() {
     const [date, setDate] = useState('');
     const [dateError, setDateError] = useState('');
     const [submitting, setSubmitting] = useState(false);
+    const [inputType, setInputType] = useState('text');
 
+
+    const handleFocus = () => {
+      setInputType('date');
+    };
+  
+    const handleBlur = () => {
+      setInputType('text');
+    };
   
     const handleHover = () => {
       if (!isHovered) {
@@ -188,7 +197,14 @@ function Main() {
                   <form action='' onSubmit={fixDate} method='POST' name='date-data' className="dt-form-container">
                   <input type='hidden' name='form-name' value='date-data' />
                     <div className="input-div">
-                      <input type="date" onChange={handleDateChange} name='date'/>
+                    <input
+                      type={inputType}
+                      onChange={handleDateChange}
+                      name='date'
+                      placeholder='Choose a perfect Date here'
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
+                    />
                       <p className='error-txt'>{dateError}</p>
                     </div>
                     <div className="input-div">
@@ -222,7 +238,7 @@ function Main() {
                 )}
             </div>
         </div>
-        <a className='credit' target="_blank" rel="noreferrer" href="https://bibhu-ni.netlify.app/">MADE WITH LOVE <span style={{ color: '#a02424' }}>&#10084;</span>, By Bibhu</a>
+        <a className='credit' target="_blank" rel="noreferrer" href="https://bibhu-ni.netlify.app/">MADE WITH <span style={{ color: '#a02424' }}>&#10084;</span>, By Bibhu</a>
     </div>
   );
 }

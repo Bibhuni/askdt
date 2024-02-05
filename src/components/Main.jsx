@@ -21,19 +21,12 @@ function Main() {
     const [dateError, setDateError] = useState('');
     const [submitting, setSubmitting] = useState(false);
     const [inputType, setInputType] = useState('text');
-    const [audio, setAudio] = useState(null);
 
 
     useEffect(()=>{
       if(isAccepted){
         const newAudio = new Audio(audioAccepted);
         newAudio.play();
-        setAudio(newAudio);
-      }else{
-        if(audio){
-          audio.pause();
-          setAudio(null);
-        }
       }
     },[isAccepted]);
     

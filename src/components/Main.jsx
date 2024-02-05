@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import getRandomGiphy from '../data/Giphy';
 import pGiphy from '../assets/please-giphy/giphy1.gif';
+import audioAccepted from '../assets/accepted.mp3';
 import './main.css';
 
 function Main() {
@@ -20,8 +21,22 @@ function Main() {
     const [dateError, setDateError] = useState('');
     const [submitting, setSubmitting] = useState(false);
     const [inputType, setInputType] = useState('text');
+    const [audio, setAudio] = useState(null);
 
 
+    useEffect(()=>{
+      if(isAccepted){
+        const newAudio = new Audio(audioAccepted);
+        newAudio.play();
+        setAudio(newAudio);
+      }else{
+        if(audio){
+          audio.pause();
+          setAudio(null);
+        }
+      }
+    },[isAccepted]);
+    
     const handleFocus = () => {
       setInputType('date');
     };

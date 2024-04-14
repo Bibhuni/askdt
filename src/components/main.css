@@ -82,6 +82,8 @@
 }
 .date-form{
     position: absolute;
+    top: 30%;
+    left: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
